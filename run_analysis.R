@@ -24,8 +24,8 @@ subject <- rbind(subject_test, subject_train)
 activity_labels <- read.table("./data/activity_labels.txt")
 colnames(activity_labels) <- c("Number","Name")
 
-feature_labels <-read.table("./data/features.txt")
-feature_names<-make.names(feature_labels[,2], unique = TRUE)
+feature_labels <-read.table("./data/features.txt", stringsAsFactors= FALSE)
+feature_names<-make.unique(feature_labels[,2])
 colnames(X)<- feature_names
 
 #only select the mean and std values (excluding meanFreq)
