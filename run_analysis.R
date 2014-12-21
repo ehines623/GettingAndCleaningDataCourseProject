@@ -22,10 +22,13 @@ subject <- rbind(subject_test, subject_train)
 
 feature_labels <-read.table("./data/features.txt", stringsAsFactors= FALSE)
 feature_names<-make.unique(feature_labels[,2])
+feature_names <-gsub('\\()', '', feature_names)
+feature_names <-gsub('-','.',feature_names)
 colnames(X)<- feature_names
 
 #only select the mean and std values (excluding meanFreq)
-X_sub <- select(X,contains("mean()", ignore.case = FALSE), contains("std()"))
+X_sub <- select(X,contains("mean", ignore.case = FALSE), contains("std")
+                , -contains("meanFreq"))
 
 # do some cleanup
 rm(X_test,Y_test,subject_test,X_train,Y_train,subject_train, X)
