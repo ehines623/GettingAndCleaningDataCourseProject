@@ -16,24 +16,33 @@ X <- rbind(X_test, X_train)
 Y <- rbind(Y_test, Y_train)
 subject <- rbind(subject_test, subject_train)
 
-rm(X_test,Y_test,subject_test,X_train,Y_train,subject_train)
-
 activity_labels <- read.table("./data/activity_labels.txt")
 colnames(activity_labels) <- c("Number","Name")
 
 feature_labels <-read.table("./data/features.txt")
-colnames(X)<-feature_labels[,2]
 
-#change this to a select
-X <- X[,1:3]
+feature_names<-make.names(feature_labels[,2], unique = TRUE)
 
-all_measurements <- cbind(subject, Y, X)
-colnames(all_measurements) <- c("Subject", "Activity", "X_mean","Y_mean","Z_mean")
+colnames(X)<- feature_names
 
-#all_measurements$Activity <- factor(all_measurements$Activity,
-#                                   activity_labels$Number,
-#                                   activity_labels$Name)
+
+X_sub <- select(X,contains("mean", ignore.case = FALSE), contains("std"), -contains("meanFreq")
+)
+
+rm(X_test,Y_test,subject_test,X_train,Y_train,subject_train)
+
+colnames(Y) <- "Activity"
+colnames(subject) <- "Subject"
+
+all_measurements <- cbind(subject, Y, X_sub)
+
+all_measurements$Activity <- factor(all_measurements$Activity,
+                                   activity_labels$Number,
+                                   activity_labels$Name)
 
 grouped <- group_by(all_measurements, Subject, Activity)
 
-blah <- summarise_each(grouped, mean())
+final_table <- summarise_each(grouped, funs(mean))
+
+
+write.table(final_table, file = "tidy_data.txt",row.names = FALSE)
