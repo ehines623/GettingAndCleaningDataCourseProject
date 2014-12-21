@@ -20,17 +20,12 @@ Y <- rbind(Y_test, Y_train)
 subject <- rbind(subject_test, subject_train)
 
 
-#get the useful labels for the data frame from the text files
-activity_labels <- read.table("./data/activity_labels.txt")
-colnames(activity_labels) <- c("Number","Name")
-
 feature_labels <-read.table("./data/features.txt", stringsAsFactors= FALSE)
 feature_names<-make.unique(feature_labels[,2])
 colnames(X)<- feature_names
 
 #only select the mean and std values (excluding meanFreq)
-X_sub <- select(X,contains("mean", ignore.case = FALSE), contains("std"), -contains("meanFreq")
-)
+X_sub <- select(X,contains("mean()", ignore.case = FALSE), contains("std()"))
 
 # do some cleanup
 rm(X_test,Y_test,subject_test,X_train,Y_train,subject_train, X)
@@ -41,6 +36,11 @@ colnames(subject) <- "Subject"
 
 #add the subject and activity colums to the table
 all_measurements <- cbind(subject, Y, X_sub)
+
+
+#get the useful labels for the data frame from the text files
+activity_labels <- read.table("./data/activity_labels.txt")
+colnames(activity_labels) <- c("Number","Name")
 
 #sub activity numbers with the descriptive names
 all_measurements$Activity <- factor(all_measurements$Activity,
