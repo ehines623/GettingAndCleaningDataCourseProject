@@ -35,6 +35,4 @@ being taken.
 - Calculate the mean for each column for these groupings using summarise_each and save the result in a final table
 - Write out the final table to "tidy_data.txt"
 
-
-
 #Please See Codebook for description of variables
