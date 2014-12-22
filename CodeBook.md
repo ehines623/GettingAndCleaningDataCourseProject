@@ -1,6 +1,6 @@
 #Code Book for "Getting and Cleaning Data Course Project"
 
-##Quick Summary
+##Quick Summary of the Tidy Data
 
 This tidy data contains 180 observations of the 68 variables.  The 180
 observations consist of 30 subjects each performing 6 different tasks
@@ -10,6 +10,36 @@ of each observational variable. (Ie either a mean of the mean, or the
 mean of the std).  In general, variables beginning with "t" are time
 measurements, while "f" are frequency signals that are the result of
 Fast Fourier Transform
+
+##Summary of Information from "raw" data as given
+
+Features are taken from accelerometer and gyroscope readings in the 3
+dimensions.  These are time domain data signals taken at a constant
+rate of 50 Hz. Then they were filtered using a median filter and a 3rd
+order low pass Butterworth filter with a corner frequency of 20 Hz to
+remove noise. Similarly, the acceleration signal was then separated
+into body and gravity acceleration signals (tBodyAcc-XYZ and
+tGravityAcc-XYZ) using another low pass Butterworth filter with a
+corner frequency of 0.3 Hz.
+
+Subsequently, the body linear acceleration and angular velocity were
+derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and
+tBodyGyroJerk-XYZ). Also the m agnitude of these three-dimensional
+signals were calculated using the Euclidean norm (tBodyAccMag,
+tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkM ag).
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these
+signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ,
+fBodyAccJerkMag, fBodyGyroM ag, fBodyGyroJerkMag. (Note the 'f' to
+indicate frequency domain signals).
+
+These signals were used to estimate variables of the feature vector
+for each pattern: '-XYZ' is used to denote 3-axial signals in the X, Y
+and Z directions.
+
+Note: features are normalized and bounded within [-1,1]
+
+
 
 ##Variable Summary
 
