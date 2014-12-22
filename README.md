@@ -23,9 +23,9 @@ being taken.
 - Load the "dplyr" library
 - Load all the relevant data into data frames: this is 6 files X,y, and subject for both the test and training files
 - Join the test and training files for each of the three "types" (X,Y, subject) using rbind
-- Load the X column names using the "data/features.txt" file
--- Because their is some duplication in names (though not in columns we will need later), make.unique is used to identify each column 
--- Some small cleanup of these names is also done using gsub to make the names more readable
+- Load the X column names using the "data/features.txt" file  
+-- Because their is some duplication in names (though not in columns we will need later), make.unique is used to identify each column   
+-- Some small cleanup of these names is also done using gsub to make the names more readable  
 - Select only the columns from X that we care about -- mean(), std()
 - Add labels to the subject and Y (activity) data frames
 - Create one large data frame using cbind to add the subject and activity as columns to our selected subset of X
