@@ -5,6 +5,12 @@ the Coursera "Getting and Cleaning Data" Dec 2014 session.
 
 ##General Overview
 
+The raw data is the result of observations of 30 subjects age 19-48,
+each performing six activities (WALKING, WALKING_UPSTAIRS,
+WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING), while wearing a
+Samsung Galaxy S II smartphone on their waist.  Readings are taken
+from its builtin accelerometer and gyroscope at 50 Hz.
+
 
 ##Included Files  
 - README.md		This File
